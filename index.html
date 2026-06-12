@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>🌿 IzzulReacter | Auto Reaction WhatsApp</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <div class="theme-toggle" onclick="toggleTheme()">
+    <span class="icon">🌿</span>
+  </div>
+  
+  <div class="container">
+    <div class="header">
+      <h1>🌿 IzzulReacter</h1>
+      <p>Turbo Mode (50x) • Safe Mode (200x)</p>
+    </div>
+    
+    <!-- PAIRING CODE CARD -->
+    <div class="card">
+      <div class="card-title">
+        <span>🔐</span> Pairing Code — Gak perlu scan QR!
+      </div>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <input type="tel" id="phone-number" placeholder="6281234567890" style="flex: 2; padding: 0.8rem;">
+        <button class="btn" id="pairing-btn" onclick="requestPairing()">🔗 Dapatkan Kode</button>
+      </div>
+      <div id="pairing-result" style="margin-top: 1rem; text-align: center;"></div>
+    </div>
+    
+    <!-- Status Card -->
+    <div class="card">
+      <div class="card-title">
+        <span>📡</span> Status Bot
+      </div>
+      <div id="status-badge">⚠️ Belum pairing</div>
+    </div>
+    
+    <!-- Channel Select -->
+    <div class="card">
+      <div class="card-title">
+        <span>📢</span> Pilih Channel Target
+      </div>
+      <select id="channel-select" style="width: 100%; padding: 0.8rem;">
+        <option value="">— Pairing dulu, Bos —</option>
+      </select>
+    </div>
+    
+    <!-- DUAL MODE BUTTONS -->
+    <div class="card" style="background: linear-gradient(135deg, rgba(46,204,113,0.1), rgba(39,174,96,0.05));">
+      <div class="card-title">
+        <span>⚡</span> Pilih Mode Spam
+      </div>
+      
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+        <!-- TURBO MODE -->
+        <button id="turbo-btn" style="flex: 1; background: linear-gradient(135deg, #f39c12, #e67e22); border: none; border-radius: 1rem; padding: 1.5rem; cursor: pointer; color: white;">
+          <div style="font-size: 2rem;">🚀</div>
+          <div style="font-weight: bold; font-size: 1.2rem;">TURBO MODE</div>
+          <div style="font-size: 0.8rem; opacity: 0.9;">50x reaction | ~25 detik</div>
+          <div style="font-size: 0.7rem; margin-top: 0.3rem;">⚡ GAS LANGSUNG!</div>
+        </button>
+        
+        <!-- SAFE MODE -->
+        <button id="safe-btn" style="flex: 1; background: linear-gradient(135deg, #2ecc71, #27ae60); border: none; border-radius: 1rem; padding: 1.5rem; cursor: pointer; color: white;">
+          <div style="font-size: 2rem;">🛡️</div>
+          <div style="font-weight: bold; font-size: 1.2rem;">SAFE MODE</div>
+          <div style="font-size: 0.8rem; opacity: 0.9;">200x reaction | ~35 menit</div>
+          <div style="font-size: 0.7rem; margin-top: 0.3rem;">✅ Aman + Cooldown</div>
+        </button>
+      </div>
+      
+      <!-- Stop Button -->
+      <button id="stop-btn" style="width: 100%; background: #e74c3c; border: none; border-radius: 1rem; padding: 1rem; margin-top: 0.5rem; cursor: pointer; color: white; font-weight: bold;">
+        ⏹️ STOP SPAM
+      </button>
+    </div>
+    
+    <!-- Progress Section -->
+    <div class="card">
+      <div class="card-title">
+        <span>📊</span> Progress
+      </div>
+      <div class="counter" id="counter">0 / 0</div>
+      <div class="progress-bar-container" style="background: var(--border); border-radius: 1rem; height: 20px; overflow: hidden;">
+        <div id="progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #2ecc71, #27ae60); transition: width 0.3s;"></div>
+      </div>
+      <div id="status-message" style="text-align: center; margin-top: 1rem; color: var(--text-secondary);"></div>
+    </div>
+    
+    <!-- Emoji Picker (opsional, buat custom emoji) -->
+    <div class="card">
+      <div class="card-title">
+        <span>😎</span> Custom Emoji (Opsional)
+      </div>
+      <div class="emoji-grid" id="emoji-grid"></div>
+      <p style="font-size: 0.7rem; margin-top: 0.5rem;">Kalo gak pilih, default 🔥</p>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
