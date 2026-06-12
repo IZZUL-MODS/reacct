@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Light Mode - Green Aesthetic */
+  --bg-primary: #f0f7f0;
+  --bg-card: #ffffff;
+  --text-primary: #1a3b2e;
+  --text-secondary: #2d5a45;
+  --accent: #2ecc71;
+  --accent-dark: #27ae60;
+  --border: #c8e6d9;
+  --shadow: 0 20px 35px -10px rgba(46, 204, 113, 0.15);
+  --gradient: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0a1f18;
+  --bg-card: #0e2a20;
+  --text-primary: #e8f5e9;
+  --text-secondary: #a5d6a7;
+  --accent: #4caf50;
+  --accent-dark: #388e3c;
+  --border: #1b3d2f;
+  --shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.5);
+  --gradient: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  min-height: 100vh;
+}
+
+/* Background blur effect */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 50%, rgba(46, 204, 113, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header dengan efek glass */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(46, 204, 113, 0.05);
+  border-radius: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+}
+
+.header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.header p {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+/* Theme Toggle - Elegan */
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  z-index: 100;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+  background: var(--accent);
+}
+
+.theme-toggle .icon {
+  font-size: 1.5rem;
+}
+
+/* Cards dengan border glow */
+.card {
+  background: var(--bg-card);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 25px 40px -10px rgba(46, 204, 113, 0.2);
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+}
+
+/* QR Code container */
+.qr-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background: white;
+  border-radius: 1rem;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.qr-container canvas,
+.qr-container img {
+  border-radius: 1rem;
+  width: 200px;
+  height: 200px;
+}
+
+/* Select & Input styling */
+select, input, button {
+  font-family: 'Space Grotesk', sans-serif;
+  padding: 0.8rem 1.2rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+select:focus, input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+}
+
+/* Button keren */
+.btn {
+  background: var(--gradient);
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.8rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 10px 25px -5px rgba(46, 204, 113, 0.4);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+/* Emoji picker grid */
+.emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 80px));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.emoji-option {
+  background: var(--bg-primary);
+  border: 2px solid var(--border);
+  border-radius: 1rem;
+  padding: 0.8rem;
+  text-align: center;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.emoji-option:hover, .emoji-option.selected {
+  border-color: var(--accent);
+  background: rgba(46, 204, 113, 0.1);
+  transform: scale(1.05);
+}
+
+/* Counter animasi */
+.counter {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .emoji-grid {
+    grid-template-columns: repeat(auto-fill, minmax(50px, 60px));
+  }
+}
